@@ -22,6 +22,9 @@ class StudentUpdateProfile(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
     
     def get(self, request):
+        '''
+        abc
+        '''
         user = request.user
         # objects
         users_data = StudentProfile.objects.get(user= user)

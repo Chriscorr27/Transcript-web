@@ -10,6 +10,10 @@ from djoser.views import UserViewSet
 from djoser import signals
 from djoser.compat import get_user_email
 from djoser.conf import settings as DjoserSettings
+
+# swagger
+# from drf_yasg.utils import swagger_auto_schema
+# from drf_yasg import openapi
        
 # Create your views here.
 class UserInfoApi(APIView):
@@ -24,6 +28,12 @@ class UserInfoApi(APIView):
         return Response(data)
 
 class UserViewSet(UserViewSet):
+    # @swagger_auto_schema(method='post', request_body=openapi.Schema(
+    # type=openapi.TYPE_OBJECT, 
+    # properties={
+    #     'x': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
+    #     'y': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
+    # }))
     def perform_create(self, serializer):
         user = serializer.save()
         signals.user_registered.send(

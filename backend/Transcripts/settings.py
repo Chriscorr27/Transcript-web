@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'djoser',
     'accounts',
     'core',
+    
+    # swagger
+    'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +191,14 @@ DJOSER = {
     }
 }
 
+# swagger
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+'REFETCH_SCHEMA_WITH_AUTH': True,
+}
